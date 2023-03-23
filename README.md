@@ -3,13 +3,13 @@
 
 ## Purpose
 
-Trygger is an easy-to-use Windows only python app.
+`Trygger` is an easy-to-use Windows only python app.
 
 It helps you decorate functions so that they are called when a key (or a sequence of keys) is pressed once or twice.
 
 The decorated function is placed in a separated thread periodically checking for keys pressed.
 
-Trygger relies on `km`, which is a small module dedicated to 
+`Trygger` relies on `kmHook`, which is a small module dedicated to 
 - detect keyboard and mouse events ;
 - synthesize keyboard and mouse events ;
 - create continuous mouse movements.

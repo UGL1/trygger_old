@@ -1,6 +1,6 @@
 from threading import Thread
 
-from km import *
+from kmhook import *
 from settings import *
 from timer import Timer
 import ctypes
