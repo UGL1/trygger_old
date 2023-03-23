@@ -16,6 +16,8 @@ Trygger relies on `km`, which is a small module dedicated to
 
 ## Usage
 
+You can use Trygger and take care of your main loop
+
 ```python
 import trygger as tg
 
@@ -38,7 +40,7 @@ def print_something():
 # start all triggers
 trg.start()
 
-# do things
+# do things inside your own mainloop
 while not tg.is_pressed("pause"):
     tg.sleep(0.001)
 
@@ -46,3 +48,21 @@ while not tg.is_pressed("pause"):
 trg.stop()
 ```
 
+You can also let Trygger do the work for you !
+
+```python
+import trygger as tg
+
+# create a Trigger
+trg = tg.Trygger()
+
+
+# decorate actions with appropriate trigger mode
+@trg.on_single_press(key='space')
+def foo():
+    print("You just pressed space")
+
+
+# start all triggers
+trg.start(mainloop=True)  # exiting MessageBox will stop Trygger
+```

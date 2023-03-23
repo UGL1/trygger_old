@@ -3,6 +3,11 @@ from threading import Thread
 from km import *
 from settings import *
 from timer import Timer
+import ctypes
+
+
+MessageBox = ctypes.windll.user32.MessageBoxW
+
 
 
 class Trygger:
@@ -11,12 +16,14 @@ class Trygger:
         self.action_threads = []
         self.go_on = False
 
-    def start(self):
+    def start(self,mainloop=False):
         self.go_on = True
         self.action_threads = [Thread(target=action) for action in self.actions]
         for action_thread in self.action_threads:
             action_thread.start()
-
+        if mainloop:
+            MessageBox(0, 'Click OK to quit', 'Trygger', 0)
+            self.stop()
     def stop(self):
         self.go_on = False
         for action_thread in self.action_threads:
